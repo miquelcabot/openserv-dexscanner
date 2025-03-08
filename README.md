@@ -1,8 +1,15 @@
-# Agent Starter
+# DexScreener Scanner Agent
 
-A starter project to help you get started with [OpenServ Labs SDK](https://github.com/openserv-labs/sdk) - a powerful TypeScript framework for building non-deterministic AI agents with advanced cognitive capabilities.
+A specialized agent that scans **DexScreener** for the **highest 24-hour trading volume token** using the [OpenServ Labs SDK](https://github.com/openserv-labs/sdk).
 
-This starter provides a minimal setup to help you understand the basics of the SDK. For more advanced features like tasks, file operations, and inter-agent collaboration, check out the [SDK documentation](https://github.com/openserv-labs/sdk).
+This agent fetches a list of trending tokens from [DexScreener](https://dexscreener.com/) and determines the token with the highest trading volume in the last 24 hours. The selected token can then be used by other agents for further trading actions.
+
+## Features
+
+* Retrieves the **top boosted tokens** from **DexScreener API**.
+* Fetches the **24-hour trading volume** for each token.
+* Selects the **highest volume token**.
+* Integrates seamlessly with OpenServ's AI agent platform.
 
 ## Before you start
 
@@ -29,8 +36,8 @@ A tunneling is a software utility that exposes a local server on your machine to
 
 1. Create an agent: Developer -> Add Agent --> Add: Agent Name and Capabilities Description
 
-Agent Name: `My first AI Agent Test`
-Capabilities Description: `I perform basic arithmetic operations`
+Agent Name: `DexScreener Scanner`
+Capabilities Description: `Scans DexScreener for the highest volume token.`
 
 2. Add Endpoint URL: set the agent's endpoint URL to your tunnelling URL (e.g. ngrok) --> Save
 3. Create an API key: Manage this agent --> Create secret key --> Copy secret key
@@ -44,8 +51,8 @@ Capabilities Description: `I perform basic arithmetic operations`
 
 1. Clone this repository
 ```bash
-git clone https://github.com/openserv-labs/agent-starter.git
-cd agent-starter
+git clone https://github.com/miquelcabot/openserv-dexscanner.git
+cd openserv-dexscanner
 ```
 
 2. Install dependencies:
@@ -72,7 +79,7 @@ cp .env.example .env
 
 ## Example Agent
 
-This agent-starter includes a simple example agent that can perform basic arithmetic:
+This agent includes a simple example agent that can perform the query
 
 ```typescript
 // Example usage
@@ -80,7 +87,7 @@ const response = await agent.process({
   messages: [
     {
       role: 'user',
-      content: 'add 13 and 29'
+      content: 'find the highest volume token on DexScreener'
     }
   ]
 })
@@ -138,12 +145,3 @@ npm start
 - Environment variables are validated using Zod
 - ESLint and Prettier are configured for consistent code style
 - The agent uses natural language processing to understand and execute commands
-
-## Next Steps
-
-Once you're comfortable with the basics, explore more advanced features in the [OpenServ Labs SDK](https://github.com/openserv-labs/sdk):
-- Tasks and workflows
-- Chat interactions
-- File operations
-- Custom capabilities
-- Inter-agent collaboration
