@@ -72,7 +72,7 @@ agent.addCapability({
 agent.start()
 
 async function main() {
-  const scanner = await agent.process({
+  const find_top_traded_token = await agent.process({
     messages: [
       {
         role: 'user',
@@ -81,7 +81,7 @@ async function main() {
     ]
   })
 
-  console.log('Top Token:', scanner.choices[0].message.content)
+  console.log('Top Token:', find_top_traded_token.choices[0].message.content)
 }
 
 main().catch(console.error)
